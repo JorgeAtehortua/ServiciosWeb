@@ -12,22 +12,18 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.amhable.dominio.UsuarioDto;
 import com.amhable.exception.MyException;
 import com.amhable.logicaNegocio.UsuarioLN;
+import com.amhable.logicaNegocio.imp.UsuarioLNimp;
 
 /**
  * @author Black_Dog
  *
  */
-/**
- * @author Black_Dog
- *
- */
-@Path ("usuarios")
+@Path ("usuario")
 @Component
 public class UsuarioWs {
 	
@@ -36,7 +32,7 @@ public class UsuarioWs {
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public String obtenerUsuario(@QueryParam("nombre") String nombrePersona)throws RemoteException{
+	public UsuarioDto obtenerUsuario(@QueryParam("nombre") String nombrePersona)throws RemoteException{
 		
 		UsuarioDto usuario=new UsuarioDto();
 		//String idUsuario=" ";
@@ -50,7 +46,7 @@ public class UsuarioWs {
 		} catch (MyException e) {
 			throw new RemoteException(e.getMessage());
 		}
-		return "Usuario: " + usuario.getIdUsuario()+ ": " + usuario.getContrasena();
+		return usuario;//"Usuario: " + usuario.getIdUsuario()+ ": " + usuario.getContrasena();
 	}
 	/*
 	@GET
