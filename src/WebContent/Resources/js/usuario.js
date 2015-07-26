@@ -1,84 +1,109 @@
 //Se crea el modulo y se le inyecta ngRoute que nos permite tener varias vistas
-var appUsuarios=angular.module('Usuario', ['ngRoute', 'ngCookies']);
+var appUsuarios = angular.module('Usuario', [ 'ngRoute', 'ngCookies' ]);
 
 var URL_SERVICIO_LOGIN_USUARIO = 'rest/Usuario/Login';
 var URL_SERVICIO_GUARDAR_USUARIO = 'rest/Usuario/guardarUsuario';
 
-appUsuarios.controller('controllerLogin', function ($scope, Usuario){
-	$scope.login=function(){
-		//Estos son los nombres de los campos en el HTML
-		Usuario.login($scope.idUsuario, $scope.contrasena).success(function(data){
-			if(data!=''){
-				alert(data);
-				$scope.idUsuario='';
-				$scope.contrasena='';
-				return;
-			}else
-				alert("Bienvenido");
-			$location.url('/registroDeUsuarios')
-		})
+appUsuarios.controller('controllerLogin', function($scope, Usuario, $location) {
+	$scope.login = function() {
+		// Estos son los nombres de los campos en el HTML
+		Usuario.validar($scope.idUsuario, $scope.contrasena).success(
+				function(data) {
+					if (data == '') {
+						alert(data);
+						$scope.idUsuario = '';
+						$scope.contrasena = '';
+						return;
+					} else
+					$location.path('/registroDeUsuarios');
+					
+				})
 	}
 })
 
-appUsuarios.controller('controllerRegistroUsuario', function ($scope, Usuario){
-	$scope.guardarUsuario=function(){
-		//Estos son los nombres de los campos en el HTML
-		Usuario.guardarUsuario($scope.idUsuario, $scope.contrasena).success(function(data){
-			if(data!=''){
-				alert(data);
-				$scope.idUsuario='';
-				$scope.contrasena='';
-				return;
-			}else
-				alert("Usuario Registrado con exito!");
-			$location.url('/principal')
-		})
+appUsuarios.controller('controllerPrincipal',function($scope, Usuario, $location) {
+	$scope.llamarLogin = function() {
+	
+		$location.path('/login');
 	}
-})
+	
+			
+	
+	$scope.llamarArchivos = function() {
 
-appUsuarios.service('Usuario', function($http){
-	
-	this.login=function(usuario,contrasena){
-		return $http({
-			method:'GET',
-			url: URL_SERVICIO_LOGIN_USUARIO,
-			params:{
-				idUsuario: usuario,
-				contrasena: contrasena,
-			}
-		});
-	};
-	
-	this.guardarUsuario=function(usuario,contrasena){
-		return $http({
-			method:'POST',
-			url: URL_SERVICIO_GUARDAR_USUARIO,
-			params:{
-				idUsuario:usuario,
-				contrasena: contrasena,
-			}
-		});
-	};
-	
+		$location.path('/archivos')
+
+	}
 });
-//Configura las vistas del aplicativo
-appClientes.config([ '$routeProvider', function($routeProvider) {
-	$routeProvider.when('/', {
-		templateUrl : 'login.html', 
+appUsuarios.controller('controllerRegistroUsuario', function($scope, Usuario, $location) {
+	$scope.guardarUsuario = function() {
+		alert('Entre a guardar');
+		// Estos son los nombres de los campos en el HTML
+//		Usuario.guardarCliente($scope.Cliente.cedula, $scope.Cliente.nombres,
+//				$scope.Cliente.apellido, $scope.Cliente.correo).success(
+//				function(data) {
+//					$location.url('/Clientes');
+//				});
+		Usuario.guardarUsuario($scope.Usuario.idUsuario, $scope.Usuario.contrasena).success(
+				function(data) {
+//					if (data == '') {
+//						alert(data);
+//						$scope.idUsuario = '';
+//						$scope.contrasena = '';
+//						return;
+//					} else
+						alert("Usuario Registrado con exito!");
+					$location.path('/')
+				})
+	}
+})
+
+appUsuarios.service('Usuario', function($http) {
+
+	this.validar = function(usuario, contrasena) {
+		return $http({
+			method : 'GET',
+			url : URL_SERVICIO_LOGIN_USUARIO,
+			params : {
+				idUsuario : usuario,
+				contrasena : contrasena,
+			}
+		});
+	};
+
+	this.guardarUsuario = function(contrasena, idUsuario) {
+		alert("hola guapo");
+		return $http({
+			
+			method : 'POST',
+			url : URL_SERVICIO_GUARDAR_USUARIO,
+			params : {
+				idUsuario : IdUsuario,
+				contrasena : contrasena
+				
+				
+			}
+		});
+	};
+
+});
+// Configura las vistas del aplicativo
+appUsuarios.config([ '$routeProvider', function($routeProvider) {
+	$routeProvider.when('/login', {
+		templateUrl : 'login.html',
 		controller : 'controllerLogin'
 	});
-	$routeProvider.when('/principal', {
-		templateUrl : 'principal.html', 
-		//controller : 'controller'
+	$routeProvider.when('/', {
+		templateUrl : 'principal.html',
+		controller : 'controllerPrincipal'
 	});
 	$routeProvider.when('/registroDeUsuarios', {
 		templateUrl : 'registrarUsuario.html',
-		controller :  'controllerRegistroUsuario'
-	})
-	
+		controller : 'controllerRegistroUsuario'
+	});
+	$routeProvider.otherwise({
+		templateUrl : 'registrarUsuario.html',
+		controller : 'controllerRegistroUsuario'
+	});
+
 } ]);
-
-
-
-
-

@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
@@ -67,10 +68,10 @@ public class UsuarioWs {
 		usuario = new UsuarioDto();
 		log = Logger.getLogger(this.getClass());
 		if (idUsuario == null || "".equals(idUsuario)) {
-			return ("Debe ingresar identificador de la categoria");
+			return ("usuario o contraseña invalidos");
 		}
 		if (contrasena == null || "".equals(contrasena)) {
-			return ("Debe ingresar nombre de la categoria");
+			return ("usuario o contraseña invalidos");
 		}
 		try {
 			usuario = usuarioLN.obtenerUsuario(idUsuario);
@@ -137,10 +138,10 @@ public class UsuarioWs {
 		usuario = new UsuarioDto();
 		log = Logger.getLogger(this.getClass());
 		if (idUsuario == null || "".equals(idUsuario)) {
-			return ("Debe ingresar identificador de la categoria");
+			return ("Algun campo esta vacio");
 		}
 		if (contrasena == null || "".equals(contrasena)) {
-			return ("Debe ingresar la contraseña del nuevo usuario");
+			return ("Algun campo esta vacio");
 		}
 		try {
 			usuario = usuarioLN.obtenerUsuario(idUsuario);
