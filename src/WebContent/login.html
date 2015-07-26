@@ -1,10 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<meta charset="UTF-8">
+<title>Login</title>
 </head>
 <body>
-
+	<form name="Login">
+		<div>
+			<p>
+				Bienvenido<br> Por favor ingrese sus datos para ingresar al
+				sistema.<br>
+			</p>
+		</div>
+		<div>
+			<label>Usuario:</label> <input type="text" required="required"
+				ng-model="User" />
+		</div>
+		<br>
+		<div>
+			<label>Contraseña:</label> <input type="password" required="required"
+				ng-model="Pass" />
+		</div>
+		<br>
+		<input type="button" value="Ingresar" ng-click="Login()">
+	</form>
 </body>
 </html>

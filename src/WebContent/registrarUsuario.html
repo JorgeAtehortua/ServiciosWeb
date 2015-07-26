@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Registro Usuario</title>
+</head>
+<body>
+<div>
+			<p>
+				Bienvenido<br> Para ingresar un nuevo usuario digite los datos solicitados.<br>
+			</p>
+		</div>
+<div>
+<form ng-submit="Guardar()">
+<div>
+<label>Nombre de Usuario</label>
+<input type="text" ng-model="Usuario.idUsuario"/>
+</div>
+<br>
+<label>Contraseña Usuario</label>
+<input type="password" ng-model="Usuario.contrasena"/>
+</div>
+<br>
+<input type="submit" value="Guardar Usuario">
+ 
+</form>
+</div>
+</body>
+</html>
