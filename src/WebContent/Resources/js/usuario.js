@@ -9,15 +9,15 @@ appUsuarios.controller('controllerLogin', function($scope, Usuario, $location) {
 		// Estos son los nombres de los campos en el HTML
 		Usuario.validar($scope.idUsuario, $scope.contrasena).success(
 				function(data) {
-					if (data == '') {
-						alert(data);
+					if (!data.autenticado) {
 						$scope.idUsuario = '';
 						$scope.contrasena = '';
 						return;
 					} else
 					$location.path('/registroDeUsuarios');
 					
-				})
+				}
+				)
 	}
 })
 
@@ -29,7 +29,7 @@ appUsuarios.controller('controllerPrincipal',function($scope, Usuario, $location
 	
 			
 	
-	$scope.llamarArchivos = function() {
+	$scope.llamarArchivo = function() {
 
 		$location.path('/archivos')
 
@@ -46,12 +46,11 @@ appUsuarios.controller('controllerRegistroUsuario', function($scope, Usuario, $l
 //				});
 		Usuario.guardarUsuario($scope.Usuario.idUsuario, $scope.Usuario.contrasena).success(
 				function(data) {
-//					if (data == '') {
-//						alert(data);
-//						$scope.idUsuario = '';
-//						$scope.contrasena = '';
-//						return;
-//					} else
+					if (!data.guardado) {
+						$scope.idUsuario = '';
+						$scope.contrasena = '';
+						return;
+					} else
 						alert("Usuario Registrado con exito!");
 					$location.path('/')
 				})
@@ -71,14 +70,15 @@ appUsuarios.service('Usuario', function($http) {
 		});
 	};
 
-	this.guardarUsuario = function(contrasena, idUsuario) {
-		alert("hola guapo");
+	this.guardarUsuario = function(idUsuario, contrasena) {
+		
+		
 		return $http({
 			
 			method : 'POST',
 			url : URL_SERVICIO_GUARDAR_USUARIO,
 			params : {
-				idUsuario : IdUsuario,
+				idUsuario : idUsuario,
 				contrasena : contrasena
 				
 				
@@ -93,6 +93,10 @@ appUsuarios.config([ '$routeProvider', function($routeProvider) {
 		templateUrl : 'login.html',
 		controller : 'controllerLogin'
 	});
+	$routeProvider.when('/archivos', {
+		templateUrl : 'archivos.html',
+		controller : 'controllerObtenerArchivos'
+	});
 	$routeProvider.when('/', {
 		templateUrl : 'principal.html',
 		controller : 'controllerPrincipal'
@@ -101,6 +105,12 @@ appUsuarios.config([ '$routeProvider', function($routeProvider) {
 		templateUrl : 'registrarUsuario.html',
 		controller : 'controllerRegistroUsuario'
 	});
+//	//Para prueba de archivos
+//	$routeProvider.when('/Archivos', {
+//		templateUrl : 'archivos.html',
+//		controller : 'controllerObtenerArchivos'
+//	});
+//	//
 	$routeProvider.otherwise({
 		templateUrl : 'registrarUsuario.html',
 		controller : 'controllerRegistroUsuario'

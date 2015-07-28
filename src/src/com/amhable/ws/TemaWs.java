@@ -86,6 +86,33 @@ public class TemaWs {
 	}
 
 	/**
+	 * Servicio que obtiene la lista con todos los temas pertenecientes a una categoria de la base de datos
+	 * @param idCategoria
+	 *            identificador de la categoria a la cual pertenece el tema
+	 * @return lista con todos los temas pertenecientes a una categoria  de la base de datos
+	 * @throws RemoteException
+	 * @throws MyException
+	 */
+	
+	@GET
+	@Produces(MediaType.APPLICATION_XML)
+	@Path("obtenerTemasDeUnaCategoria")
+	public List<TemaDto> obtenerTemasDeUnaCategoria(@QueryParam("idCategoria") Integer idCategoria) throws RemoteException, MyException {
+		List<TemaDto> temas = new ArrayList<TemaDto>();
+		log = Logger.getLogger(this.getClass());
+
+		try {
+			temas = temaLN.obtenerTemasDeUnaCategoria(idCategoria);
+		} catch (MyException e) {
+			log.error("Error obteniendo la lista de temas de una categoria (WS)", e);
+			throw new RemoteException(e.getMessage());
+		}
+
+		return temas;
+
+	}
+	
+	/**
 	 * Servicio que obtiene la lista con todos los temas de la base de datos
 	 * 
 	 * @return lista con todos los temas de la base de datos

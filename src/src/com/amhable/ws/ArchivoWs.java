@@ -93,7 +93,7 @@ public class ArchivoWs {
 	 * @throws MyException
 	 */
 	@GET
-	@Produces(MediaType.APPLICATION_XML)
+	@Produces(MediaType.APPLICATION_JSON)
 	@Path("obtenerArchivos")
 	public List<ArchivoDto> obtenerArchivos()throws RemoteException, MyException {
 		List<ArchivoDto> archivos= new ArrayList<ArchivoDto>();
@@ -262,7 +262,7 @@ public class ArchivoWs {
 	 * @throws MyException
 	 */
 	@GET
-	@Produces(MediaType.APPLICATION_XML)
+	@Produces(MediaType.APPLICATION_JSON)
 	@Path("obtenerArchivoPorCategoria")
 	public List<ArchivoDto> obtenerArchivoPorCategoria(@QueryParam("idCategoria") Integer idCategoria)
 			throws RemoteException, MyException {
@@ -294,7 +294,7 @@ public class ArchivoWs {
 	 * @throws MyException
 	 */
 	@GET
-	@Produces(MediaType.APPLICATION_XML)
+	@Produces(MediaType.APPLICATION_JSON)
 	@Path("obtenerArchivoPorCategoriaYTema")
 	public List<ArchivoDto> obtenerArchivoPorCategoriaYTema(
 			@QueryParam("idCategoria") Integer idCategoria,

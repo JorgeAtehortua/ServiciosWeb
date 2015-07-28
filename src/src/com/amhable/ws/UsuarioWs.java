@@ -59,7 +59,7 @@ public class UsuarioWs {
 	 * @throws MyException
 	 */
 	@GET
-	@Produces(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.APPLICATION_JSON)
 	@Path("Login")
 	public String autenticarUsuario(
 			@QueryParam("idUsuario") String idUsuario,
@@ -68,23 +68,23 @@ public class UsuarioWs {
 		usuario = new UsuarioDto();
 		log = Logger.getLogger(this.getClass());
 		if (idUsuario == null || "".equals(idUsuario)) {
-			return ("usuario o contraseña invalidos");
+			return ("{\"autenticado\":false, \"datos\":false}");
 		}
 		if (contrasena == null || "".equals(contrasena)) {
-			return ("usuario o contraseña invalidos");
+			return ("{\"autenticado\":false, \"datos\":false}");
 		}
 		try {
 			usuario = usuarioLN.obtenerUsuario(idUsuario);
 
 			if (!usuario.getContrasena().equals(contrasena)) {
-				return "Usuario NO autenticado, idUsuario y/o contraseña no son correctos";
+				return "{\"autenticado\":false, \"datos\":true}";
 			}
 
 		} catch (MyException e) {
 			log.error("Error autenticando usuario (WS): ", e);
 			throw new RemoteException(e.getMessage());
 		}
-		return "Usuario autenticado exitosamente";
+		return "{\"autenticado\":true}";
 
 	}
 
@@ -130,7 +130,7 @@ public class UsuarioWs {
 	 * @throws MyException
 	 */
 	@POST
-	@Produces(MediaType.TEXT_HTML)
+	@Produces(MediaType.APPLICATION_JSON)
 	@Path("guardarUsuario")
 	public String guardarUsuario(@QueryParam("idUsuario") String idUsuario,
 			@QueryParam("contrasena") String contrasena)
@@ -138,15 +138,16 @@ public class UsuarioWs {
 		usuario = new UsuarioDto();
 		log = Logger.getLogger(this.getClass());
 		if (idUsuario == null || "".equals(idUsuario)) {
-			return ("Algun campo esta vacio");
+			return ("{\"guardado\":false, \"datos\":false}");
 		}
 		if (contrasena == null || "".equals(contrasena)) {
-			return ("Algun campo esta vacio");
+			return ("{\"guardado\":false, \"datos\":false}");
 		}
 		try {
 			usuario = usuarioLN.obtenerUsuario(idUsuario);
 			if (usuario != null) {
-				return "Ya existe un usuario con ese identificador";
+//				return "Ya existe un usuario con ese identificador"; Revisar que estos datos son quemados
+				return ("{\"guardado\":false, \"datos\":true,\"existeUsuario\":true}");
 			}
 			usuarioLN.guardar(idUsuario, contrasena);
 
@@ -154,7 +155,8 @@ public class UsuarioWs {
 			log.error("Error guardando usuario (WS): ", e);
 			throw new RemoteException(e.getMessage());
 		}
-		return "Usuario guardado exitosamente";
+//		return "Usuario guardado exitosamente";
+		return ("{\"guardado\":true, \"datos\":true,\"existeUsuario\":false}");
 
 	}
 

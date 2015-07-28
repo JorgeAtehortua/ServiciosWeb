@@ -1,10 +1,17 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
-</html>
+<h1>Archivos Amhable</h1>
+<div >
+<table border="1" width="100%">
+			<tr>
+				<th>Id Archivo</th>
+				<th>Nombre Archivo</th>
+				<th>Categoria</th>
+				<th>Tema</th>
+			</tr>
+			<tr ng-repeat="item in Archivos">
+				<td>{{item.idArchivo}}</td>
+				<td>{{item.nombre}}</td>
+				<td>{{item.categoria_idCategoria.nombre}}</td>
+				<td>{{item.tema_idTema.nombre}}</td>
+			</tr>
+		</table>
+</div>

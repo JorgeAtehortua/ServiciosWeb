@@ -6,22 +6,25 @@
 </head>
 <body>
 	<div>
+	<h1>REGISTRAR USUARIOS</h1>
 		<p>
 			Bienvenido<br> Para ingresar un nuevo usuario digite los datos
 			solicitados.<br>
 		</p>
 	</div>
 
-<!-- 	<form ng-submit="guardarUsuario()"> -->
-<form name="guardar">
+	<!-- 	<form ng-submit="guardarUsuario()"> -->
+	<form name="guardar">
 		<div>
 			<label>Nombre de Usuario</label> <input type="text"
-				ng-model="Usuario.idUsuario" />
+				ng-model="Usuario.idUsuario" /> <br>
 		</div>
-		<br> <label>Contraseña Usuario</label> <input type="password"
-			ng-model="Usuario.contrasena" /> <br> <input type="submit"
-			value="Guardar Usuario" ng-click="guardarUsuario()">
-
+		<div>
+			<label>Contraseña Usuario</label> <input type="password"
+				ng-model="Usuario.contrasena" /> <br> 
+		</div>
+		<input type="submit"
+				value="Guardar Usuario" ng-click="guardarUsuario()">
 	</form>
 	</div>
 </body>
