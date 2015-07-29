@@ -75,6 +75,9 @@ public class UsuarioWs {
 		}
 		try {
 			usuario = usuarioLN.obtenerUsuario(idUsuario);
+			if(usuario==null){
+				return "{\"autenticado\":false, \"datos\":true}";
+			}
 
 			if (!usuario.getContrasena().equals(contrasena)) {
 				return "{\"autenticado\":false, \"datos\":true}";

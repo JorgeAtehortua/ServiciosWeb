@@ -14,6 +14,9 @@ app.controller('controllerLogin', function($scope, Usuario, $location){
 				if (!data.autenticado) {
 					$scope.idUsuario = '';
 					$scope.contrasena = '';
+					if (!data.datos) {
+						alert("Los campos son obligatorios");
+					}else alert("Usuario no existe");
 					return;
 				} else
 				$location.path('/registroDeUsuarios');
@@ -29,6 +32,9 @@ app.controller('controllerPrincipal',function($scope, Usuario, $location) {
 	}
 	$scope.llamarArchivo = function() {
 		$location.path('/archivos');
+	}
+	$scope.llamarPrincipal = function() {
+		$location.path('/');
 	}
 });
 

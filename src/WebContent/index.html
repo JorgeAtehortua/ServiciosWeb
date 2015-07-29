@@ -22,11 +22,11 @@ ademas de cargar las librerias y componentes necesarios para que angular funcion
 		<script type="text/javascript" src="Resources/js/archivo.js"></script>
 	</head>
 
-	<div class="wrapper">
+	<div class="wrapper" ng-controller="controllerPrincipal">
 		<header>
 			<div class="container-fluid btn-primary">
-				<br> <img src="Resources/imagenes/icono.png" width="100"
-					align="left" style="margin-right: 20px">
+				<br> <a ng-click="llamarPrincipal()"><img src="Resources/imagenes/icono.png" width="100"
+					align="left" style="margin-right: 20px"></a>
 				<h1>Amhable</h1>
 				<h5>Proyecto ingenieria web -- Luisa Fernanda Suarez - Jorge Armando Atehortua</h5>
 			</div>
