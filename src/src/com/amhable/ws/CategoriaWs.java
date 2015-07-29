@@ -97,7 +97,7 @@ public class CategoriaWs {
 	 * @throws MyException
 	 */
 	@GET
-	@Produces(MediaType.APPLICATION_XML)
+	@Produces(MediaType.APPLICATION_JSON)
 	@Path("obtenerCategorias")
 	public List<CategoriaDto> obtenerCategorias() throws RemoteException,
 			MyException {

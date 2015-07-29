@@ -62,7 +62,7 @@ public class TemaWs {
 	 * @throws MyException
 	 */
 	@GET
-	@Produces(MediaType.APPLICATION_XML)
+	@Produces(MediaType.APPLICATION_JSON)
 	@Path("obtenerTema")
 	public TemaDto obtenerTema(@QueryParam("idTema") Integer idTema)
 			throws RemoteException, MyException {
@@ -95,7 +95,7 @@ public class TemaWs {
 	 */
 	
 	@GET
-	@Produces(MediaType.APPLICATION_XML)
+	@Produces(MediaType.APPLICATION_JSON)
 	@Path("obtenerTemasDeUnaCategoria")
 	public List<TemaDto> obtenerTemasDeUnaCategoria(@QueryParam("idCategoria") Integer idCategoria) throws RemoteException, MyException {
 		List<TemaDto> temas = new ArrayList<TemaDto>();
@@ -120,7 +120,7 @@ public class TemaWs {
 	 * @throws MyException
 	 */
 	@GET
-	@Produces(MediaType.APPLICATION_XML)
+	@Produces(MediaType.APPLICATION_JSON)
 	@Path("obtenerTemas")
 	public List<TemaDto> obtenerTemas() throws RemoteException, MyException {
 		List<TemaDto> temas = new ArrayList<TemaDto>();

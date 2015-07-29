@@ -37,18 +37,17 @@ appUsuarios.controller('controllerPrincipal',function($scope, Usuario, $location
 });
 appUsuarios.controller('controllerRegistroUsuario', function($scope, Usuario, $location) {
 	$scope.guardarUsuario = function() {
-		alert('Entre a guardar');
-		// Estos son los nombres de los campos en el HTML
-//		Usuario.guardarCliente($scope.Cliente.cedula, $scope.Cliente.nombres,
-//				$scope.Cliente.apellido, $scope.Cliente.correo).success(
-//				function(data) {
-//					$location.url('/Clientes');
-//				});
+		
 		Usuario.guardarUsuario($scope.Usuario.idUsuario, $scope.Usuario.contrasena).success(
 				function(data) {
 					if (!data.guardado) {
-						$scope.idUsuario = '';
-						$scope.contrasena = '';
+						$scope.Usuario.idUsuario = '';
+						$scope.Usuario.contrasena = '';
+						if (!data.datos) {
+							alert("Los campos son obligatorios");
+						}else alert("Ya existe un usuario con ese nombre");
+						
+						
 						return;
 					} else
 						alert("Usuario Registrado con exito!");
@@ -105,12 +104,6 @@ appUsuarios.config([ '$routeProvider', function($routeProvider) {
 		templateUrl : 'registrarUsuario.html',
 		controller : 'controllerRegistroUsuario'
 	});
-//	//Para prueba de archivos
-//	$routeProvider.when('/Archivos', {
-//		templateUrl : 'archivos.html',
-//		controller : 'controllerObtenerArchivos'
-//	});
-//	//
 	$routeProvider.otherwise({
 		templateUrl : 'registrarUsuario.html',
 		controller : 'controllerRegistroUsuario'

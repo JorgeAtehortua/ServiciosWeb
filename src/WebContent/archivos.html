@@ -1,17 +1,54 @@
-<h1>Archivos Amhable</h1>
-<div >
-<table border="1" width="100%">
-			<tr>
-				<th>Id Archivo</th>
-				<th>Nombre Archivo</th>
-				<th>Categoria</th>
-				<th>Tema</th>
-			</tr>
-			<tr ng-repeat="item in Archivos">
-				<td>{{item.idArchivo}}</td>
-				<td>{{item.nombre}}</td>
-				<td>{{item.categoria_idCategoria.nombre}}</td>
-				<td>{{item.tema_idTema.nombre}}</td>
-			</tr>
-		</table>
+<div class="container">
+	<h1 align="center">Archivos Amhable</h1>
+	</br>
+	<h3 align="center">Filtros</h3>
+	</p>
+	<div class="row">
+
+		<!-- 		 <label for="nombreArchivo" class="sr-only">Usuario</label> -->
+		<!--         <input type="text" id="inputEmail" class="form-control" placeholder="Usuario" required="required" autofocus="" ng-model="idUsuario"> -->
+		<div class=" col-md-4" align="center">
+			<label for="nombreArchivo">Nombre del archivo:</label> <input
+				class="form-control input-lg" id="nombreArchivo" type="text"
+				ng-model="nombreArchivo" placeholder="Ingrese el nombre del archivo">
+		</div>
+
+		<div class=" col-md-4" align="center">
+			<label for="categorias">Categoria:</label> <select id="categorias"
+				class="form-control input-lg"
+				ng-options="categoria.nombre for categoria in categorias"
+				ng-model="nombreCategoria" ng-selected="categoriaSeleccionada"
+				ng-change="obtenerTemasPorCategoria(nombreCategoria.idCategoria)">
+				<option value="" disabled="selected">Seleccione una categoria </option>
+			</select>
+		</div>
+
+		<div class=" col-md-4" align="center">
+			<label for="temas">Tema:</label> <select id="temas"
+				class="form-control input-lg"
+				ng-options="tema.nombre for tema in temas" ng-change=""
+				ng-model="nombreTema" ng-selected="temaSeleccionado">
+			<option value="" disabled="selected">Seleccione un tema </option>
+			</select>
+		</div>
+	</div>
+	</br>
+	<table class="table">
+		<tr class="btn-primary">
+			<th>Id Archivo</th>
+			<th>Nombre Archivo</th>
+			<th>Categoria</th>
+			<th>Tema</th>
+		</tr>
+
+		<tr
+			ng-repeat="item in Archivos | filter:{nombre: nombreArchivo} 
+			| filter:{categoria_idCategoria: nombreCategoria} 
+			| filter:{tema_idTema: nombreTema}">
+			<td>{{item.idArchivo}}</td>
+			<td>{{item.nombre}}</td>
+			<td>{{item.categoria_idCategoria.nombre}}</td>
+			<td>{{item.tema_idTema.nombre}}</td>
+		</tr>
+	</table>
 </div>

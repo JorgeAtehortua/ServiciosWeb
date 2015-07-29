@@ -1,27 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Principal</title>
-<!-- <script type="text/javascript" src="Resources/js/angular.min.js"></script> -->
-<!-- <script type="text/javascript" src="Resources/js/angular.js"></script> -->
-<!-- <script type="text/javascript" src="Resources/js/angular-route.js"></script> -->
-<!-- <script type="text/javascript" src="Resources/js/angular-cookies.js"></script> -->
-<!-- <script type="text/javascript" src="Resources/js/usuario.js"></script> -->
-<!-- </head> -->
-<!-- <body ng-app="Usuario"> -->
-<body>
-<h1>Amhable Principal</h1>
-	<div ng-controller="controllerPrincipal">
-		<form name="login">
-			<div>Bienvenido</div>
-			<br>
-			<!-- 	<li><a ng-href="llamarLogin()">login</a> -->
-			<input type="button" value="LOGIN" ng-click="llamarLogin()" >
-				<br>
-				<br>
-				<input type="button" value="ARCHIVOS" ng-click="llamarArchivo()">
-		</form>
-	</div>
-</body>
-</html>
+<div class="jumbotron" ng-controller="controllerPrincipal">
+  <div class="container">
+    <h1 align="center">Amhable Principal</h1>
+    <p  align="center">Bienvenido<p>
+    <div  align="center">
+    <a class="btn btn-primary btn-lg" role="button" ng-click="llamarLogin()">LOGIN</a>
+    <a class="btn btn-primary btn-lg" role="button" ng-click="llamarArchivo()">ARCHIVOS</a></p>
+ 	</div>
+  </div>
+</div>

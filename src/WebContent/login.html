@@ -3,26 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Login</title>
+<link rel="stylesheet" href="Resources/css/login.css">
 </head>
 <body>
-	<form name="Login">
-		<div>
-		<h1>LOGIN</h1>
-			<p>
-				Bienvenido<br> Por favor ingrese sus datos para ingresar al
-				sistema.<br>
-			</p>
-		</div>
-		<div>
-			<label>Usuario:</label> <input type="text" required="required"
-				ng-model="idUsuario" />
-		</div>
-		<br>
-		<div>
-			<label>Contraseña:</label> <input type="password" required="required"
-				ng-model="contrasena" />
-		</div>
-		<br> <input type="button" value="Ingresar" ng-click="login()">
-	</form>
+	<div class="container">
+      <form class="form-signin">
+        <h2 class="form-signin-heading" align="center"><strong>Autentíquese</strong></h2>
+        </br>
+        <label for="inputEmail" class="sr-only">Usuario</label>
+        <input type="text" id="inputEmail" class="form-control" placeholder="Usuario" required="required" autofocus="" ng-model="idUsuario">
+        <label for="inputPassword" class="sr-only">Contraseña</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required="required" ng-model="contrasena">
+        <button class="btn btn-lg btn-primary btn-block" type="button" ng-click="login()">Acceder</button>
+      </form>
+    </div>
+<link rel="stylesheet" href="Resources/css/login.css">
 </body>
 </html>
