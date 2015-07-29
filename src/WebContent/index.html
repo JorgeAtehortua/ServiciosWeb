@@ -1,35 +1,50 @@
+
+<!-- Pagina HTML encargada de realizar la redireccion hacia las demas paginas del sistema,
+ademas de cargar las librerias y componentes necesarios para que angular funcione sin problemas-->
+
 <!DOCTYPE html>
 <html>
-<head>
+	<head>
+		
+		<meta charset="ISO-8859-1">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<title>Amhable</title>
+		<link rel="shortcut icon" href="Resources/imagenes/icono.png" type="image/png" />
+		
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script type="text/javascript" src="Resources/js/angular.min.js"></script>
+		<script type="text/javascript" src="Resources/js/angular-route.js"></script>
+		<script type="text/javascript" src="Resources/js/angular-cookies.js"></script>
+		<script type="text/javascript" src="Resources/js/usuario.js"></script>
+		<script type="text/javascript" src="Resources/js/archivo.js"></script>
+	</head>
 
-	<meta charset="ISO-8859-1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Amhable</title>
-	  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script type="text/javascript" src="Resources/js/angular.min.js"></script>
-	<script type="text/javascript" src="Resources/js/angular-route.js"></script>
-	<script type="text/javascript" src="Resources/js/angular-cookies.js"></script>
-	<script type="text/javascript" src="Resources/js/usuario.js"></script>
-	<script type="text/javascript" src="Resources/js/archivo.js"></script>
+	<div class="wrapper">
+		<header>
+			<div class="container-fluid btn-primary">
+				<br> <img src="Resources/imagenes/icono.png" width="100"
+					align="left" style="margin-right: 20px">
+				<h1>Amhable</h1>
+				<h5>Proyecto ingenieria web -- Luisa Fernanda Suarez - Jorge Armando Atehortua</h5>
+			</div>
 	
-	
-</head>
-
-<body ng-app="Usuario">
-	<div ng-view></div>
-
-
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
-
-</body>
+		</header>
+	</div>	
+	<body ng-app="Usuario">
+		<div ng-view></div>
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet"
+			href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		
+		<!-- Optional theme -->
+		<link rel="stylesheet"
+			href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+		
+		<!-- Latest compiled and minified JavaScript -->
+		<script
+			src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	</body>
 </html>

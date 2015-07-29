@@ -1,19 +1,35 @@
+
+<!-- Pagina HTML encargada del registro de nuevos usuarios-->
+
 <meta charset="ISO-8859-1">
 <div class="container">
 	<form class="form-signin">
 		<h2 class="form-signin-heading" align="center">
 			<strong>REGISTRAR NUEVO USUARIO</strong>
 		</h2>
-		<h4 align="center">Bienvenido, para ingresar un nuevo usuario
-			digite los datos solicitados.</h4>
-		</br> <label for="inputEmail" class="sr-only">Usuario</label> <input
-			type="text" id="inputEmail" class="form-control"
-			placeholder="Usuario" required="required" autofocus=""
-			ng-model="Usuario.idUsuario"> <label for="inputPassword"
-			class="sr-only">Contraseña</label> <input type="password"
-			id="inputPassword" class="form-control" placeholder="Contraseña"
-			required="required" ng-model="Usuario.contrasena">
-		<button class="btn btn-lg btn-primary btn-block" type="button"
+		<h4 align="center">
+			Bienvenido, para ingresar un nuevo usuario digite los datos solicitados.
+		</h4>
+		</br> 
+		<label for="inputEmail" class="sr-only">Usuario</label>
+		<input
+			type="text" 
+			id="inputEmail" 
+			class="form-control"
+			placeholder="Usuario" 
+			required="required" 
+			autofocus=""
+			ng-model="Usuario.idUsuario"> 
+		<label for="inputPassword" class="sr-only">Contraseña</label> 
+		<input 
+			type="password"
+			id="inputPassword" 
+			class="form-control" 
+			placeholder="Contraseña"
+			required="required" 
+			ng-model="Usuario.contrasena">
+		<button class="btn btn-lg btn-primary btn-block" 
+			type="button"
 			ng-click="guardarUsuario()">Guardar Usuario</button>
 	</form>
 </div>

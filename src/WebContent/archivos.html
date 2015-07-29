@@ -1,38 +1,50 @@
+
+<!-- Esta pagina HTML sera la encargada de llamar y mostrar
+ los diferentes archivos que estaran contenidos en la base de datos-->
+
 <div class="container">
 	<h1 align="center">Archivos Amhable</h1>
 	</br>
 	<h3 align="center">Filtros</h3>
 	</p>
 	<div class="row">
-
-		<!-- 		 <label for="nombreArchivo" class="sr-only">Usuario</label> -->
-		<!--         <input type="text" id="inputEmail" class="form-control" placeholder="Usuario" required="required" autofocus="" ng-model="idUsuario"> -->
+<!-- Funcion encargada de crear el input de texto que listara los diferentes archivos contenidos por el sistema-->
 		<div class=" col-md-4" align="center">
-			<label for="nombreArchivo">Nombre del archivo:</label> <input
-				class="form-control input-lg" id="nombreArchivo" type="text"
-				ng-model="nombreArchivo" placeholder="Ingrese el nombre del archivo">
+			<label for="nombreArchivo">Nombre del archivo:</label>
+			<input
+				class="form-control input-lg" 
+				id="nombreArchivo" 
+				type="text"
+				ng-model="nombreArchivo" 
+				placeholder="Ingrese el nombre del archivo">
 		</div>
-
+<!-- Funcion encargada de crear el combo box que listara las diferentes categorias contenidas por el sistema-->
 		<div class=" col-md-4" align="center">
-			<label for="categorias">Categoria:</label> <select id="categorias"
+			<label for="categorias">Categoria:</label> 
+			<select 
+				id="categorias"
 				class="form-control input-lg"
 				ng-options="categoria.nombre for categoria in categorias"
-				ng-model="nombreCategoria" ng-selected="categoriaSeleccionada"
+				ng-model="nombreCategoria" 
+				ng-selected="categoriaSeleccionada"
 				ng-change="obtenerTemasPorCategoria(nombreCategoria.idCategoria)">
-				<option value="" disabled="selected">Seleccione una categoria </option>
+				<option value="" disabled="selected">Seleccione una categoria</option>
 			</select>
 		</div>
 
+<!-- Funcion encargada de crear el combo box que listara los diferentes temas contenidos por el sistema-->
 		<div class=" col-md-4" align="center">
 			<label for="temas">Tema:</label> <select id="temas"
 				class="form-control input-lg"
 				ng-options="tema.nombre for tema in temas" ng-change=""
 				ng-model="nombreTema" ng-selected="temaSeleccionado">
-			<option value="" disabled="selected">Seleccione un tema </option>
+				<option value="" disabled="selected">Seleccione un tema</option>
 			</select>
 		</div>
 	</div>
 	</br>
+	
+<!-- 	tabla para mostrar los archivos  -->
 	<table class="table">
 		<tr class="btn-primary">
 			<th>Id Archivo</th>
@@ -41,6 +53,7 @@
 			<th>Tema</th>
 		</tr>
 
+<!-- 		Columnas de la tabla aplicandoles diversos filtros de busqueda -->
 		<tr
 			ng-repeat="item in Archivos | filter:{nombre: nombreArchivo} 
 			| filter:{categoria_idCategoria: nombreCategoria} 
