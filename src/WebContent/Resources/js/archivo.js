@@ -1,3 +1,8 @@
+
+/**
+ * @author Jorge Atehortua
+ * @author Luisa Suarez
+ */
 //Se crean las variables contenedoras de las URL relacionadas con los servicios web
 
 var URL_SERVICIO_OBTENER_ARCHIVOS = 'rest/Archivo/obtenerArchivos';

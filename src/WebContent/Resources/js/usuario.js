@@ -1,3 +1,9 @@
+
+/**
+ * @author Jorge Atehortua
+ * @author Luisa Suarez
+ */
+
 //Se crea el modulo y se le inyecta ngRoute que nos permite tener varias vistas
 var app = angular.module('Usuario', [ 'ngRoute', 'ngCookies' ]);
 
@@ -8,7 +14,7 @@ var URL_SERVICIO_GUARDAR_USUARIO = 'rest/Usuario/guardarUsuario';
 //Definimos el controlador para login, el cual sera el encargado de manejar el proceso de validacion.
 app.controller('controllerLogin', function($scope, Usuario, $location){
 	$scope.login = function(){
-		// Estos son los nombres de los campos en el HTML
+		// Parametros de entrada para el servicio
 		Usuario.validar($scope.idUsuario, $scope.contrasena).success(
 			function(data){
 				if (!data.autenticado) {
